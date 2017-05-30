@@ -1,0 +1,24 @@
+{
+    "name": "tigrov/yii2-enum",
+    "description": "Enum type behavior for Yii2 based on class constants",
+    "keywords": ["enum"],
+    "type": "library",
+    "license": "MIT",
+    "support": {
+        "source": "https://github.com/tigrov/yii2-enum"
+    },
+    "authors": [
+        {
+            "name": "Sergei Tigrov",
+            "email": "rrr-r@ya.ru"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "~2.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "tigrov\\enum\\": ""
+        }
+    }
+}
