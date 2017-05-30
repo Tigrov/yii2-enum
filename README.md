@@ -109,7 +109,7 @@ Examples
 
 Gender codes:
 ```php
-class GenderCode extends \tigrov\enum\EnumBehavior
+class GenderEnum extends \tigrov\enum\EnumBehavior
 {
     const MALE = 'M';
     const FEMALE = 'F';
@@ -129,12 +129,19 @@ class Model extends \yii\db\ActiveRecord
     public function behaviors()
     {
         return [
-            GenderCode::className(),
+            GenderEnum::className(),
+        ];
+    }
+    
+    public function rules()
+    {
+        return [
+            [['gender_code'], 'in', 'range' => GenderEnum::codes()],
         ];
     }
 }
 
-$model->gender_code = 'M';
+$model->gender_code = GenderEnum::MALE; // is 'M'
 
 // The field 'gender' has humanize and translated value
 $model->gender; // is 'Male' or translated value
@@ -142,7 +149,7 @@ $model->gender; // is 'Male' or translated value
 
 Messenger names:
 ```php
-class MessengerType extends \tigrov\enum\EnumBehavior
+class MessengerEnum extends \tigrov\enum\EnumBehavior
 {
     const SKYPE = 'skype';
     const WHATSAPP = 'whatsapp';
@@ -180,7 +187,7 @@ class MessengerType extends \tigrov\enum\EnumBehavior
     }
 }
 
-$model->type_key = 'whatsapp';
+$model->type_key = MessengerEnum::WHATSAPP; // is 'whatsapp'
 $model->type; // is 'WhatsApp'
 ```
 
