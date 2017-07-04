@@ -47,12 +47,22 @@ abstract class EnumBehavior extends Behavior
 
     /**
      * Returns a display value for $code
-     * @param string $code value of a class constant
+     * @param string $code the value of a class constant
      * @return string
      */
     public static function value($code)
     {
         return static::values()[$code];
+    }
+
+    /**
+     * Returns a boolean indicating whether the enum has a value.
+     * @param string $code the value of a class constant
+     * @return bool
+     */
+    public static function has($code)
+    {
+        return isset(static::values()[$code]);
     }
 
     /**

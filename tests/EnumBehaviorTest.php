@@ -29,6 +29,12 @@ class EnumBehaviorTest extends TestCase
         $this->assertSame(['M', 'F'], GenderCode::codes());
     }
 
+    public function testHas()
+    {
+        $this->assertTrue(GenderCode::has('M'));
+        $this->assertFalse(GenderCode::has('Male'));
+    }
+
     public function testHasProperty()
     {
         $model = new Model;
