@@ -20,7 +20,7 @@ abstract class EnumBehavior extends Behavior
      * @var array list of attributes that are to be automatically humanized value.
      * humanized => original attribute
      */
-    public $attributes = ['type' => 'type_key'];
+    public $attributes = [];
 
     /** @var string|null a message category for translation the values */
     public static $messageCategory = null;

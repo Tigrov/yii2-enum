@@ -39,7 +39,7 @@ class Status extends \tigrov\enum\EnumBehavior
     const REJECTED = 'rejected';
     const DELETED = 'deleted';
 
-    /** @var array list of attributes that are to be automatically humanized value. */
+    /** @var array list of attributes that are to be automatically humanized value */
     public $attributes = ['status' => 'status_key'];
     
     /** @var string|null a message category for translation the values */
@@ -115,7 +115,7 @@ class GenderEnum extends \tigrov\enum\EnumBehavior
     const FEMALE = 'F';
 
     /**
-     * @var array list of attributes that are to be automatically humanized value.
+     * @var array list of attributes that are to be automatically humanized value
      * humanized => original attribute
      */
     public $attributes = ['gender' => 'gender_code'];
@@ -166,6 +166,9 @@ class MessengerEnum extends \tigrov\enum\EnumBehavior
     const YAHOO = 'yahoo';
     const OTHER = 'other';
     
+    /** @var array list of attributes that are to be automatically humanized value */
+    public $attributes = ['type' => 'type_key'];
+        
     /**
      * Values of Messengers
      * @return array
