@@ -122,6 +122,15 @@ class GenderEnum extends \tigrov\enum\EnumBehavior
     
     /** @var string|null a message category for translation the values */
     public static $messageCategory = 'gender';
+    
+    /**
+    * Returns default value (it uses if the attribute value is null)
+    * @return string|null
+    */
+    public static function defaultValue()
+    {
+        return static::t('Unspecified');
+    }
 }
 
 class Model extends \yii\db\ActiveRecord
@@ -145,6 +154,9 @@ $model->gender_code = GenderEnum::MALE; // is 'M'
 
 // The field 'gender' has humanize and translated value
 $model->gender; // is 'Male' or translated value
+
+$model->gender_code = null;
+$model->gender; // is 'Unspecified' or translated value. @see GenderEnum::defaultValue()
 ```
 
 Messenger names:

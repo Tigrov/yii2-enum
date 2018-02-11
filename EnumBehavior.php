@@ -23,7 +23,19 @@ abstract class EnumBehavior extends Behavior
     public $attributes = [];
 
     /** @var string|null a message category for translation the values */
-    public static $messageCategory = null;
+    public static $messageCategory;
+
+    /**
+     * Translates a message. @see \Yii::t()
+     * @param string $value
+     * @return string
+     */
+    public static function t($value)
+    {
+        return static::$messageCategory
+            ? \Yii::t(static::$messageCategory, $value)
+            : $value;
+    }
 
     /**
      * Returns display values of the enum type
@@ -36,9 +48,7 @@ abstract class EnumBehavior extends Behavior
         if (!isset($list[$className])) {
             foreach (static::constants() as $value => $code) {
                 $value = Inflector::humanize(strtolower($value), true);
-                $list[$className][$code] = static::$messageCategory
-                    ? \Yii::t(static::$messageCategory, $value)
-                    : $value;
+                $list[$className][$code] = static::t($value);
             }
         }
 
@@ -85,6 +95,15 @@ abstract class EnumBehavior extends Behavior
     }
 
     /**
+     * Returns default value (it uses if the attribute value is null)
+     * @return string|null
+     */
+    public static function defaultValue()
+    {
+        return null;
+    }
+
+    /**
      * @inheritdoc
      */
     public function canGetProperty($name, $checkVars = true)
@@ -94,11 +113,15 @@ abstract class EnumBehavior extends Behavior
 
     /**
      * @inheritdoc
+     * Returns default value if the attribute value is null
      */
     public function __get($name)
     {
-        if (isset($this->attributes[$name])) {
-            if ($code = $this->owner->{$this->attributes[$name]}) {
+        if (array_key_exists($name, $this->attributes)) {
+            $code = $this->owner->{$this->attributes[$name]};
+            if ($code === null) {
+                return static::defaultValue();
+            } else {
                 if (is_array($code)) {
                     return array_intersect_key(static::values(), array_flip($code));
                 }

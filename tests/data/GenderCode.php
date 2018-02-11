@@ -12,4 +12,13 @@ class GenderCode extends \tigrov\enum\EnumBehavior
      * humanized => original attribute
      */
     public $attributes = ['gender' => 'gender_code'];
+
+    /**
+     * Returns default value (it uses if the attribute value is null)
+     * @return string|null
+     */
+    public static function defaultValue()
+    {
+        return 'Unspecified';
+    }
 }

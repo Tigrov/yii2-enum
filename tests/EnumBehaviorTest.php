@@ -62,4 +62,10 @@ class EnumBehaviorTest extends TestCase
             'FEMALE' => 'F',
         ], GenderCode::constants());
     }
+
+    public function testDefaultValue()
+    {
+        $model = new Model;
+        $this->assertSame('Unspecified', $model->gender);
+    }
 }
