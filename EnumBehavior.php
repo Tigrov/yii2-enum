@@ -95,7 +95,7 @@ abstract class EnumBehavior extends Behavior
     }
 
     /**
-     * Returns default value (it uses if the attribute value is null)
+     * Returns default value (it uses if the attribute value is empty)
      * @return string|null
      */
     public static function defaultValue()
@@ -113,20 +113,19 @@ abstract class EnumBehavior extends Behavior
 
     /**
      * @inheritdoc
-     * Returns default value if the attribute value is null
+     * Returns default value if the attribute value is empty
      */
     public function __get($name)
     {
         if (array_key_exists($name, $this->attributes)) {
-            $code = $this->owner->{$this->attributes[$name]};
-            if ($code === null) {
-                return static::defaultValue();
-            } else {
+            if ($code = $this->owner->{$this->attributes[$name]}) {
                 if (is_array($code)) {
                     return array_intersect_key(static::values(), array_flip($code));
                 }
 
                 return static::value($code);
+            } else {
+                return static::defaultValue();
             }
         }
 
