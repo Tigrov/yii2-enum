@@ -124,7 +124,7 @@ class GenderEnum extends \tigrov\enum\EnumBehavior
     public static $messageCategory = 'gender';
     
     /**
-    * Returns default value (it uses if the attribute value is empty)
+    * Returns default value (it will be used if the attribute value is empty)
     * @return string|null
     */
     public static function defaultValue()
