@@ -66,9 +66,9 @@ class Model extends \yii\db\ActiveRecord
     public function behaviors()
     {
         return [
-            Status::className(),
+            Status::class,
             // 'status' => [
-            //     'class' => Status::className(),
+            //     'class' => Status::class,
             //     'attributes' => ['status' => 'status_key'],
             // ],
         ];
@@ -138,7 +138,7 @@ class Model extends \yii\db\ActiveRecord
     public function behaviors()
     {
         return [
-            GenderEnum::className(),
+            GenderEnum::class,
         ];
     }
     

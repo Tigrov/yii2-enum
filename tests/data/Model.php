@@ -12,7 +12,7 @@ class Model extends ActiveRecord
     public function behaviors()
     {
         return [
-            GenderCode::className(),
+            GenderCode::class,
         ];
     }
 

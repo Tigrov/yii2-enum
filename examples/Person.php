@@ -39,7 +39,7 @@ class Person extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['gender_code'], EnumValidator::className()],
+            [['gender_code'], EnumValidator::class],
             [['first_name', 'last_name'], 'string', 'max' => 50],
         ];
     }

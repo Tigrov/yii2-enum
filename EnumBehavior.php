@@ -44,7 +44,7 @@ abstract class EnumBehavior extends Behavior
     public static function values() {
         static $list = [];
 
-        $className = static::className();
+        $className = static::class;
         if (!isset($list[$className])) {
             foreach (static::constants() as $value => $code) {
                 $value = Inflector::humanize(strtolower($value), true);
@@ -90,7 +90,7 @@ abstract class EnumBehavior extends Behavior
      */
     public static function constants()
     {
-        $class = new \ReflectionClass(static::className());
+        $class = new \ReflectionClass(static::class);
         return $class->getConstants();
     }
 
