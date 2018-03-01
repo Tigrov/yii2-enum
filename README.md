@@ -6,6 +6,11 @@ Enum type behavior for Yii2 based on class constants.
 [![Latest Stable Version](https://poser.pugx.org/Tigrov/yii2-enum/v/stable)](https://packagist.org/packages/Tigrov/yii2-enum)
 [![Build Status](https://travis-ci.org/Tigrov/yii2-enum.svg?branch=master)](https://travis-ci.org/Tigrov/yii2-enum)
 
+Limitation
+----------
+
+Since 1.1.0 requires PHP >= 5.5
+
 Installation
 ------------
 
