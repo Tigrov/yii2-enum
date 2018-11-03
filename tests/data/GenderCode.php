@@ -17,7 +17,7 @@ class GenderCode extends \tigrov\enum\EnumBehavior
      * Returns default value (it will be used if the attribute value is empty)
      * @return string|null
      */
-    public static function defaultValue()
+    public static function emptyValue()
     {
         return 'Unspecified';
     }

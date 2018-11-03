@@ -95,8 +95,18 @@ abstract class EnumBehavior extends Behavior
     }
 
     /**
+     * Returns value for empty attribute value
+     * @return string|null
+     */
+    public static function emptyValue()
+    {
+        return static::defaultValue();
+    }
+
+    /**
      * Returns default value (it will be used if the attribute value is empty)
      * @return string|null
+     * @deprecated use new method emptyValue() instead
      */
     public static function defaultValue()
     {
@@ -125,7 +135,7 @@ abstract class EnumBehavior extends Behavior
 
                 return static::value($code);
             } else {
-                return static::defaultValue();
+                return static::emptyValue();
             }
         }
 

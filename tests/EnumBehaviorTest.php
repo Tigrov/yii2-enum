@@ -63,7 +63,7 @@ class EnumBehaviorTest extends TestCase
         ], GenderCode::constants());
     }
 
-    public function testDefaultValue()
+    public function testEmptyValue()
     {
         $model = new Model;
         $this->assertSame('Unspecified', $model->gender);

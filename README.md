@@ -129,10 +129,10 @@ class GenderEnum extends \tigrov\enum\EnumBehavior
     public static $messageCategory = 'gender';
     
     /**
-    * Returns default value (it will be used if the attribute value is empty)
+    * Returns value for empty attribute value
     * @return string|null
     */
-    public static function defaultValue()
+    public static function emptyValue()
     {
         return static::t('Unspecified');
     }
@@ -161,7 +161,7 @@ $model->gender_code = GenderEnum::MALE; // is 'M'
 $model->gender; // is 'Male' or translated value
 
 $model->gender_code = null;
-$model->gender; // is 'Unspecified' or translated value. @see GenderEnum::defaultValue()
+$model->gender; // is 'Unspecified' or translated value. @see GenderEnum::emptyValue()
 ```
 
 Messenger names:
