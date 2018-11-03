@@ -188,11 +188,12 @@ class MessengerEnum extends \tigrov\enum\EnumBehavior
         
     /**
      * Values of Messengers
+     * @param bool $addEmpty add empty value first
      * @return array
      */
-    public static function values()
+    public static function values($addEmpty = false)
     {
-        $values = parent::values();
+        $values = parent::values($addEmpty);
         
         // Correct some values
         $values['whatsapp'] = 'WhatsApp';

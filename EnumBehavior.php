@@ -39,20 +39,23 @@ abstract class EnumBehavior extends Behavior
 
     /**
      * Returns display values of the enum type
+     * @param bool $addEmpty add empty value first
      * @return array [ code => value ]
      */
-    public static function values() {
+    public static function values($addEmpty = false) {
         static $list = [];
 
         $className = static::class;
         if (!isset($list[$className])) {
+            $list[$className] = [];
             foreach (static::constants() as $value => $code) {
                 $value = Inflector::humanize(strtolower($value), true);
                 $list[$className][$code] = static::t($value);
             }
         }
 
-        return $list[$className];
+        return ($addEmpty ? ['' => static::emptyValue()] : [])
+            + $list[$className];
     }
 
     /**
@@ -62,7 +65,7 @@ abstract class EnumBehavior extends Behavior
      */
     public static function value($code)
     {
-        return static::values()[$code];
+        return static::values(true)[$code ?: ''];
     }
 
     /**
@@ -130,7 +133,7 @@ abstract class EnumBehavior extends Behavior
         if (array_key_exists($name, $this->attributes)) {
             if ($code = $this->owner->{$this->attributes[$name]}) {
                 if (is_array($code)) {
-                    return array_intersect_key(static::values(), array_flip($code));
+                    return array_intersect_key(static::values(true), array_flip($code));
                 }
 
                 return static::value($code);
