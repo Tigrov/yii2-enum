@@ -13,4 +13,12 @@ class GenderEnum extends EnumBehavior
 
     /** @var string a message category for translation the values */
     public static $messageCategory = 'app';
+
+    /**
+     * @inheritdoc
+     */
+    public static function emptyValue()
+    {
+        return static::t('Unspecified');
+    }
 }

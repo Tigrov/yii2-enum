@@ -13,12 +13,12 @@ class MeasurementSystemEnum extends EnumBehavior
 
     /**
      * Values of Measurement Systems
-     *
+     * @param bool $withEmpty with empty value at first
      * @return array
      */
-    public static function values()
+    public static function values($withEmpty = false)
     {
-        return [
+        return ($withEmpty ? ['' => static::emptyValue()] : []) + [
             static::METRIC => \Yii::t('app', 'International System (metre, kilogram)'),
             static::US => \Yii::t('app', 'United States (inch, pound)'),
         ];
