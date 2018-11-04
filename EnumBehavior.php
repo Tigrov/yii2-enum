@@ -39,10 +39,10 @@ abstract class EnumBehavior extends Behavior
 
     /**
      * Returns display values of the enum type
-     * @param bool $addEmpty add empty value first
+     * @param bool $withEmpty with empty value at first
      * @return array [ code => value ]
      */
-    public static function values($addEmpty = false) {
+    public static function values($withEmpty = false) {
         static $list = [];
 
         $className = static::class;
@@ -54,7 +54,7 @@ abstract class EnumBehavior extends Behavior
             }
         }
 
-        return ($addEmpty ? ['' => static::emptyValue()] : [])
+        return ($withEmpty ? ['' => static::emptyValue()] : [])
             + $list[$className];
     }
 
